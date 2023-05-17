@@ -1,0 +1,64 @@
+# Site
+name: "The Resourceful Coder"
+title: "The Resourceful Coder"
+description: "Blog for seasoned and aspiring software developers alike."
+logo:
+favicon:
+baseurl:
+google_analytics: 'G-KW8ZRP2ZQS'
+disqus: 'theresourcefulcoder'
+mailchimp-list:
+include: ["_pages"]
+permalink: /:title/
+
+# Authors
+authors:
+  tim:
+    name: Tim
+    display_name: Tim
+    avatar: 'assets/images/tim_avatar.png'
+    gravatar:
+    email: webdevtrainer@att.net
+    web: https://www.theresourcefulcoder.com
+    twitter: https://twitter.com/WebDevTrainer
+    description: "Author of The Resourceful Coder blog."
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+
+# Pagination
+paginate: 6
+paginate_path: /page:num/
+
+# Other
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: "ca-pub-3412143450191416"
+adsense-data-ad-slot: "1363087678"
+
+# Lazy Images ("enabled" or "disabled")
+lazyimages: "disabled"
+
+exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
