@@ -3,13 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <!-- <link rel="icon" href="{{ site.baseurl }}/assets/images/logo.png" /> -->
 
         <title>{{ page.title }} | {{site.name}}</title>
 
         {% seo %}
 
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" /> -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/screen.css" />
         <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css" />
@@ -18,18 +16,18 @@
 
     {% if jekyll.environment == 'production' %}
     <!-- change your GA id in _config.yml -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW8ZRP2ZQS"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', '{{site.google_analytics}}');
+        gtag('config', '{{ site.google_analytics }}');
     </script>
     {% endif %}
 
     {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
-    <body class="{{layout}}">
+    <body class="{{ layout }}">
         <!-- defer loading of font and font awesome -->
         <noscript id="deferred-styles">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" />
@@ -93,8 +91,8 @@
                 <!-- Bottom Alert Bar -->
                 <div class="alertbar">
                     <div class="container text-center">
-                        <span><img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{site.title}}"> &nbsp; Never miss a <b>story</b> from us, subscribe to our newsletter</span>
-                        <form action="{{site.mailchimp-list}}" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
+                        <span><img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.title }}"> &nbsp; Never miss a <b>story</b> from us, subscribe to our newsletter</span>
+                        <form action="{{ site.mailchimp-list }}" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
                             <div class="mc-field-group">
                             <input type="email" placeholder="Email" name="EMAIL" class="required email" id="mce-EMAIL" autocomplete="on" required>
                             <input type="submit" value="Subscribe" name="subscribe" class="heart">
@@ -118,11 +116,11 @@
                         {% assign categories_list = site.categories %}
                         {% if categories_list.first[0] == null %}
                             {% for category in categories_list %}
-                                <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>
+                                <a class="mt-1 mb-1" href="{{ site.baseurl }}/categories#{{ category | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a>
                             {% endfor %}
                         {% else %}
                             {% for category in categories_list %}
-                                <a class="mt-1 mb-1" href="{{site.baseurl}}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
+                                <a class="mt-1 mb-1" href="{{ site.baseurl }}/categories#{{ category[0] | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a>
                             {% endfor %}
                         {% endif %}
                         {% assign categories_list = nil %}
@@ -148,16 +146,13 @@
         </div> <!-- /.site-content -->
 
         <!-- Scripts -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
         {% if site.lazyimages == "enabled" %}
         <script src="{{ site.baseurl }}/assets/js/lazyload.js"></script>
         {% endif %}
-        <!-- <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script> -->
         {% if page.layout == 'post' %}
-        <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js" async></script>
+        <script id="dsq-count-scr" src="//{{ site.disqus }}.disqus.com/count.js" async></script>
         {% endif %}
     </body>
 </html>
